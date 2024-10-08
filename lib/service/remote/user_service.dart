@@ -1,10 +1,40 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eco_grow/model/donate_model.dart';
 import 'package:eco_grow/model/user_model.dart';
 import 'package:eco_grow/service/local/shared_preferences_service.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class UserService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+  Future<void> updateUserAvatar(String avatarFilePath) async {
+    try {
+      final uid = await SharedPreferencesService().getUid();
+
+      // Tạo tên hình ảnh dựa trên uid
+      String fileName = '$uid.png'; // Bạn có thể thay đổi đuôi nếu cần
+
+      // Đẩy hình ảnh lên Firebase Storage
+      File avatarFile = File(avatarFilePath);
+      TaskSnapshot uploadTask =
+          await _storage.ref('avatars/$fileName').putFile(avatarFile);
+
+      // Lấy URL của hình ảnh đã upload
+      String avatarUrl = await uploadTask.ref.getDownloadURL();
+
+      // Cập nhật đường dẫn hình ảnh vào Firestore
+      await _firestore
+          .collection('users')
+          .doc(uid)
+          .update({'avatar': avatarUrl});
+    } catch (e) {
+      print('Error updating avatar: $e');
+      throw e;
+    }
+  }
+
   Future<List<UserModel>> getAllUsers() async {
     try {
       QuerySnapshot userSnapshot = await _firestore.collection('users').get();

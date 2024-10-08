@@ -26,18 +26,14 @@ class AppDialog {
       ),
       dismissOnTouchOutside: true,
       dismissOnBackKeyPress: false,
-      onDismissCallback: (type) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Dismissed by $type'),
-          ),
-        );
-      },
+
       headerAnimationLoop: false,
       animType: AnimType.bottomSlide,
       title: 'Thông báo',
       body: body,
       showCloseIcon: true,
+      btnOkText: 'Có',
+      btnCancelText: 'Không',
       btnCancelOnPress: showCancelButton
           ? () {}
           : null, // Only show cancel button if `showCancelButton` is true
@@ -65,16 +61,39 @@ class AppDialog {
       ),
       dismissOnTouchOutside: true,
       dismissOnBackKeyPress: false,
-      onDismissCallback: (type) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Dismissed by $type'),
-          ),
-        );
-      },
       headerAnimationLoop: false,
       animType: AnimType.bottomSlide,
       title: 'Thông báo',
+      showCloseIcon: false,
+      btnCancelOnPress: null,
+      btnOkOnPress: btnOkOnPress,
+    );
+  }
+
+  // Error dialog with red button and border
+  static AwesomeDialog errorDialog(BuildContext context,
+      {required void Function()? btnOkOnPress, String? desc}) {
+    return AwesomeDialog(
+      context: context,
+      padding: const EdgeInsets.all(10.0),
+      dialogType: DialogType.error,
+      btnOkColor: Colors.red, // Màu nút OK
+      desc: desc ?? 'Đã xảy ra lỗi!',
+      descTextStyle: const TextStyle(fontSize: 18, color: Colors.red),
+      borderSide: const BorderSide(
+        color: Colors.red, // Màu viền
+        width: 2,
+      ),
+      width: double.infinity,
+      buttonsBorderRadius: const BorderRadius.all(
+        Radius.circular(2),
+      ),
+      dismissOnTouchOutside: true,
+      dismissOnBackKeyPress: false,
+
+      headerAnimationLoop: false,
+      animType: AnimType.bottomSlide,
+      title: 'Thông báo lỗi',
       showCloseIcon: false,
       btnCancelOnPress: null,
       btnOkOnPress: btnOkOnPress,

@@ -10,7 +10,7 @@ class ContactModel {
     ContactModel(title: '+123 456 7890', icon: Icons.phone_android),
     ContactModel(title: 'ecogrow303@gmail.com', icon: Icons.email_outlined),
     ContactModel(
-        title: 'Hoàng Minh Giám, Phường 3, Gò Vấp, Hồ Chí Minh, Vietnam',
+        title: 'Bà Rịa - Vũng Tàu',
         icon: Icons.map_outlined)
   ];
 }

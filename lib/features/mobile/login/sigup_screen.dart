@@ -1,4 +1,6 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:eco_grow/core/components/app_button.dart';
+import 'package:eco_grow/core/components/app_dialog.dart';
 import 'package:eco_grow/core/components/text_animated_custom.dart';
 import 'package:eco_grow/core/constants/app_color.dart';
 import 'package:eco_grow/core/constants/app_style.dart';
@@ -56,15 +58,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       const SizedBox(height: 20),
                       const TextAnimatedCustom(
-                        "Create Your Account",
+                        "Đăng ký tài khoản",
                         style: AppStyle.titleTextWebMobile,
                       ),
                       const SizedBox(height: 30),
                       _buildTextField(
                         controller: _nameController,
-                        label: "Full Name",
+                        label: "Họ và tên",
                         validator: (value) => value == null || value.isEmpty
-                            ? 'Please enter your name'
+                            ? 'Vui lòng nhập tên'
                             : null,
                       ),
                       const SizedBox(height: 20),
@@ -77,23 +79,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(height: 20),
                       _buildTextField(
                         controller: _passwordController,
-                        label: "Password",
+                        label: "Mật khẩu",
                         obscureText: true,
                         validator: ValidationUtils.validatePassword,
                       ),
                       const SizedBox(height: 20),
                       _buildTextField(
                         controller: _confirmPasswordController,
-                        label: "Confirm Password",
+                        label: "Xác nhận mật khẩu",
                         obscureText: true,
                         validator: (value) => value != _passwordController.text
-                            ? 'Passwords do not match'
+                            ? 'Mật khẩu không khớp'
                             : null,
                       ),
 
                       const SizedBox(height: 30),
                       AppButton(
-                        textButton: 'Sign Up',
+                        textButton: 'Đăng ký',
                         width: double.infinity,
                         height: 55.h,
                         isLoading: isLoading,
@@ -114,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Navigator.pop(context);
                         },
                         child: Text(
-                          "Already have an account? Login",
+                          "Đã có tài khoản? Đăng nhập",
                           style: TextStyle(
                             color: Colors.blue,
                             fontSize: 14.sp,
@@ -175,34 +177,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
       _toggleLoading(false);
 
       if (user != null) {
-        _showMessage("Sign Up Successful", "Welcome, $name!");
+        AppDialog.successDialog(
+          desc: 'Chúc mừng bạn đã đăng ký thành công tài khoản!',
+          context,
+          btnOkOnPress: () {
+            Navigator.pop(context);
+          },
+        ).show();
       } else {
-        _showMessage("Sign Up Failed", "Please try again.");
+        AppDialog.errorDialog(
+          desc: 'Email đã tồn tại trong hệ thống!',
+          context,
+          btnOkOnPress: () {},
+        ).show();
       }
     } catch (e) {
       _toggleLoading(false);
-      _showMessage("Error", "An unexpected error occurred.");
+      AppDialog.successDialog(
+        desc:
+            'Lỗi không xác định, vui lòng liên hệ +123 456 789 đễ được hỗ trợ!',
+        context,
+        btnOkOnPress: () {
+          Navigator.pop(context);
+        },
+      ).show();
     }
-  }
-
-  void _showMessage(String title, String content) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(content),
-        actions: [
-          TextButton(
-            onPressed: () {
-              if (title == 'Sign Up Successful') {
-                Navigator.pop(context);
-              }
-              Navigator.of(context).pop();
-            },
-            child: const Text("OK"),
-          ),
-        ],
-      ),
-    );
   }
 }

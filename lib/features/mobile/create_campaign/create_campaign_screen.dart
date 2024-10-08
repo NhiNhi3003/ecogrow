@@ -23,10 +23,12 @@ class CreateCampaignScreen extends StatefulWidget {
   State<CreateCampaignScreen> createState() => _CreateCampaignScreenState();
 }
 
-class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
+class _CreateCampaignScreenState extends State<CreateCampaignScreen>
+    with SingleTickerProviderStateMixin {
   double totalDonate = 0;
   double balance = 0.0;
 
+  late AnimationController _controller;
   TextEditingController donateController = TextEditingController();
   TextEditingController noteController = TextEditingController();
 
@@ -34,8 +36,22 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
   UserService userService = UserService();
   @override
   void initState() {
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 2000));
     fetchData();
+    _playAnimation();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _playAnimation() {
+    _controller.reset();
+    _controller.forward();
   }
 
   Future<void> fetchData() async {
@@ -56,6 +72,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
         SizedBox(height: 60.0.h),
         Lottie.asset(
           Assets.json.tree1,
+          controller: _controller,
         ),
         AppInput(
           textEditingController: donateController,
@@ -135,7 +152,14 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
                     AppDialog.successDialog(
                       context,
                       desc: 'Ủng hộ thành công!',
-                      btnOkOnPress: () {},
+                      btnOkOnPress: () {
+                        Future.delayed(
+                         const Duration(milliseconds: 500),
+                          () {
+                            _playAnimation();
+                          },
+                        );
+                      },
                     ).show();
                   });
 

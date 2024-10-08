@@ -154,7 +154,7 @@ Widget _buildContactInfo() {
       ),
       SizedBox(height: 5),
       Text(
-        'Address: Hoàng Minh Giám, Phường 3, Gò Vấp, Hồ Chí Minh, Vietnam',
+        'Address: Bà Rịa - Vũng Tàu',
         style: TextStyle(color: Colors.white70),
       ),
     ],

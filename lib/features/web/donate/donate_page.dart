@@ -39,7 +39,8 @@ class _DonatePageState extends State<DonatePage> {
           isMobileWeb: isMobile,
           bannerImageUrl:
               'https://cdn.pixabay.com/photo/2024/09/23/02/20/man-9067410_960_720.jpg',
-          bannerTitle: 'Mỗi đóng góp – Một cuộc đời được cứu!',
+          bannerTitle:
+              "Cùng EcoGrow, xanh hóa thế giới từ những hạt giống nhỏ!",
         ),
         TableCustomResponsive(
           isMobile: isMobile,

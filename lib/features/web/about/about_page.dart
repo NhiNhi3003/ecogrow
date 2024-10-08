@@ -7,7 +7,6 @@ import 'package:eco_grow/core/constants/app_color.dart';
 import 'package:eco_grow/core/constants/app_style.dart';
 import 'package:eco_grow/core/extensions/app_extension.dart';
 import 'package:eco_grow/core/utils/app_utils.dart';
-import 'package:eco_grow/gen/assets.gen.dart';
 import 'package:eco_grow/model/core_value_model.dart';
 import 'package:flutter/material.dart';
 

@@ -52,19 +52,19 @@ class _MainScreenState extends State<MainScreen> {
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                label: 'Home',
+                label: 'Trang chủ',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.history),
-                label: 'History',
+                label: 'Lịch sử',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.add_circle_outline),
-                label: 'Create',
+                label: 'Ủng hộ',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                label: 'Profile',
+                label: 'Cá nhân',
               ),
             ],
             selectedItemColor: AppColor.accentColor,

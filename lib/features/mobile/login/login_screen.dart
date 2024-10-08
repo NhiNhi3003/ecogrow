@@ -1,4 +1,5 @@
 import 'package:eco_grow/core/components/app_button.dart';
+import 'package:eco_grow/core/components/app_dialog.dart';
 import 'package:eco_grow/core/components/text_animated_custom.dart';
 import 'package:eco_grow/core/constants/app_color.dart';
 import 'package:eco_grow/core/constants/app_style.dart';
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 20),
                       // Welcome message with animated text
                       const TextAnimatedCustom(
-                        "Welcome to EcoGrow!",
+                        "Chào mừng đến với EcoGrow!",
                         style: AppStyle.titleTextWebMobile,
                       ),
                       const SizedBox(height: 30),
@@ -89,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          labelText: "Password",
+                          labelText: "Mật khẩu",
                           labelStyle: TextStyle(
                             fontSize: 16.sp,
                             color: AppColor.accentColor,
@@ -104,7 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 30),
                       // Login button
                       AppButton(
-                        textButton: isLoading ? 'Logging in...' : 'Login',
+                        textButton:
+                            isLoading ? 'Đang đăng nhập...' : 'Đăng nhập',
                         width: double.infinity,
                         height: 55.h,
                         isLoading: isLoading,
@@ -123,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context.pushRtl(screen: const SignUpScreen());
                         },
                         child: Text(
-                          "Don't have an account? Sign up",
+                          "Không có tài khoản? Đăng ký",
                           style: TextStyle(
                             color: Colors.blue,
                             fontSize: 14.sp,
@@ -157,31 +159,22 @@ class _LoginScreenState extends State<LoginScreen> {
             screen: const MainScreen(), type: PageTransitionType.rightToLeft);
         sharedPreferencesService.setUid(user.uid);
       } else {
-        _showDialog("Error", "An unexpected error occurred. Please try again.");
+        AppDialog.errorDialog(context,
+                btnOkOnPress: () {}, desc: 'Sai email hoặc mật khẩu!')
+            .show();
       }
     } catch (e) {
       setState(() {
         isLoading = false;
       });
-      _showDialog("Error", "An unexpected error occurred. Please try again.");
+      AppDialog.successDialog(
+        desc:
+            'Lỗi không xác định, vui lòng liên hệ +123 456 789 đễ được hỗ trợ!',
+        context,
+        btnOkOnPress: () {
+          Navigator.pop(context);
+        },
+      ).show();
     }
-  }
-
-  void _showDialog(String title, String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text("OK"),
-          ),
-        ],
-      ),
-    );
   }
 }

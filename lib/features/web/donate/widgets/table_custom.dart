@@ -222,7 +222,7 @@ class _TableCustomResponsiveState extends State<TableCustomResponsive> {
                                 '#${row.transactionCode.toString().toUpperCase()}'),
                             Text('Tên: ${row.userName.toString()}'),
                             Text('Số tiền: ${row.money.toVND()}'),
-                            Text('Gi chú: ${row.note.toString()}'),
+                            Text('Ghi chú: ${row.note.toString()}'),
                             Text(
                                 'Ngày donate: ${FormatDateUtils.formatDateTime(row.createAt)}'),
                           ],
