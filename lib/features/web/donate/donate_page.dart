@@ -1,6 +1,9 @@
+import 'package:eco_grow/core/components/app_button.dart';
 import 'package:eco_grow/core/components/responsive/banner_responsive.dart';
+import 'package:eco_grow/core/components/responsive/footer_responsive.dart';
 import 'package:eco_grow/core/extensions/app_extension.dart';
 import 'package:eco_grow/core/utils/app_utils.dart';
+import 'package:eco_grow/features/mobile/splash/splash_screen.dart';
 import 'package:eco_grow/features/web/donate/widgets/table_custom.dart';
 import 'package:eco_grow/model/donate_model.dart';
 import 'package:eco_grow/service/remote/donate_service.dart';
@@ -46,6 +49,21 @@ class _DonatePageState extends State<DonatePage> {
           isMobile: isMobile,
           datas: datas,
         ),
+        const SizedBox(height: 20.0),
+        if (isMobile)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppUtils.mobilePaddingHoriz),
+            child: AppButton(
+              textButton: 'Trải nghiệm ủng hộ ngay',
+              onPressed: () {
+                context.push(
+                  screen: const SplashScreen(),
+                );
+              },
+            ),
+          ),
+        FooterResponsive(isWebMobile: isMobile),
       ],
     );
   }

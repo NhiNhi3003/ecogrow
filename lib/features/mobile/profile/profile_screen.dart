@@ -157,8 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildSectionItem(
                   icon: Icons.favorite_border,
                   label: 'Về ứng dụng',
-                  onTap: () =>
-                      _openLink('https://eco-grow-e50ea.firebaseapp.com/'),
+                  onTap: () => _openLink('https://eco-grow-e50ea.web.app/'),
                 ),
                 _buildSectionItem(
                   icon: Icons.logout,
