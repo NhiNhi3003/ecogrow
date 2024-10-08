@@ -1,0 +1,40 @@
+# Flutter/Dart specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+build/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Podfile.lock
+ios/Pods/
+ios/Runner.xcworkspace/
+macos/Flutter/Flutter.framework
+macos/Flutter/Flutter.podspec
+macos/Pods/
+macos/Podfile.lock
+macos/Runner.xcworkspace/
+android/.gradle/
+android/app/debug/
+android/app/release/
+android/app/*.jks
+android/local.properties
+android/.idea/
+*.iml
+
+# Visual Studio Code
+.vscode/
+
+# IntelliJ
+.idea/
+
+# Miscellaneous
+*.log
+*.DS_Store
+*.apk
+*.ap_
+*.so
+*.tgz
+*.zip
