@@ -66,46 +66,48 @@ class _DonationHistoryScreenState extends State<DonationHistoryScreen> {
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "#${donation.transactionCode ?? 'No Code'}",
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w100,
-              ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              "Số tiền quyên góp: ${donation.money.toVND()}", // Display donation amount
-              style: const TextStyle(fontSize: 14, color: Colors.grey),
-            ),
-            const SizedBox(height: 5),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 4,
-              ),
-              decoration: BoxDecoration(
-                color: AppColor.accentColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                donation.note ??
-                    'No Note', // Show the donation note or fallback
+        child: Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "#${donation.transactionCode ?? 'No Code'}",
                 style: const TextStyle(
-                  fontSize: 12,
-                  color: AppColor.accentColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w100,
                 ),
               ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              "Ngày: ${FormatDateUtils.formatDateTime(donation.createAt.toLocal())}", // Display formatted date
-              style: const TextStyle(fontSize: 12, color: Colors.grey),
-            ),
-          ],
+              const SizedBox(height: 5),
+              Text(
+                "Số tiền quyên góp: ${donation.money.toVND()}", // Display donation amount
+                style: const TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+              const SizedBox(height: 5),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 4,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColor.accentColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  donation.note ??
+                      'No Note', // Show the donation note or fallback
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: AppColor.accentColor,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                "Ngày: ${FormatDateUtils.formatDateTime(donation.createAt.toLocal())}", // Display formatted date
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+            ],
+          ),
         ),
       ),
     );

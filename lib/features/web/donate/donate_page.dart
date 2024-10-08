@@ -15,8 +15,8 @@ class DonatePage extends StatefulWidget {
 
 class _DonatePageState extends State<DonatePage> {
   DonateService donateService = DonateService();
-
   List<DonateModel> datas = [];
+
   @override
   void initState() {
     fetchData();
@@ -25,6 +25,8 @@ class _DonatePageState extends State<DonatePage> {
 
   Future<void> fetchData() async {
     datas = await donateService.getAllDonates();
+    // Đảo ngược danh sách
+    datas = datas.reversed.toList();
     setState(() {});
   }
 
@@ -34,14 +36,15 @@ class _DonatePageState extends State<DonatePage> {
     return ListView(
       children: [
         BannerResponsive(
-            isMobileWeb: isMobile,
-            bannerImageUrl:
-                'https://cdn.pixabay.com/photo/2024/09/23/02/20/man-9067410_960_720.jpg',
-            bannerTitle: 'Mỗi đóng góp – Một cuộc đời được cứu!'),
+          isMobileWeb: isMobile,
+          bannerImageUrl:
+              'https://cdn.pixabay.com/photo/2024/09/23/02/20/man-9067410_960_720.jpg',
+          bannerTitle: 'Mỗi đóng góp – Một cuộc đời được cứu!',
+        ),
         TableCustomResponsive(
           isMobile: isMobile,
           datas: datas,
-        )
+        ),
       ],
     );
   }

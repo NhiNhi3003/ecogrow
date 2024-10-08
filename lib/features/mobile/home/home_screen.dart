@@ -106,41 +106,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   'https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg'),
             ),
             SizedBox(width: 20.w),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "#${donate.transactionCode ?? 'N/A'}",
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w100,
-                  ),
-                ),
-                SizedBox(height: 5.h),
-                Text(
-                  "Tên: ${donate.userName}",
-                  style: TextStyle(fontSize: 20.sp, color: Colors.black),
-                ),
-                Text(
-                  "Số tiền quyên góp: ${donate.money.toVND()}",
-                  style: TextStyle(fontSize: 14.sp, color: Colors.grey),
-                ),
-                SizedBox(height: 5.h),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                  decoration: BoxDecoration(
-                    color: AppColor.accentColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  child: Text(
-                    donate.note ?? 'Không có ghi chú',
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "#${donate.transactionCode ?? 'N/A'}",
                     style: TextStyle(
-                      fontSize: 12.sp,
-                      color: AppColor.accentColor,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w100,
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 5.h),
+                  Text(
+                    "Tên: ${donate.userName}",
+                    style: TextStyle(fontSize: 20.sp, color: Colors.black),
+                  ),
+                  Text(
+                    "Số tiền quyên góp: ${donate.money.toVND()}",
+                    style: TextStyle(fontSize: 14.sp, color: Colors.grey),
+                  ),
+                  SizedBox(height: 5.h),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                    decoration: BoxDecoration(
+                      color: AppColor.accentColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Text(
+                      donate.note ?? 'Không có ghi chú',
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: AppColor.accentColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
