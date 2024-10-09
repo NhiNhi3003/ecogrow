@@ -2,6 +2,7 @@ import 'package:eco_grow/core/components/responsive/banner_responsive.dart';
 import 'package:eco_grow/core/components/responsive/footer_responsive.dart';
 import 'package:eco_grow/core/extensions/app_extension.dart';
 import 'package:eco_grow/core/utils/app_utils.dart';
+import 'package:eco_grow/features/web/home/widgets/crop_data_responsive.dart';
 import 'package:eco_grow/features/web/home/widgets/live_green_responsive.dart';
 import 'package:eco_grow/features/web/home/widgets/vision_responsive.dart';
 import 'package:eco_grow/model/about_model.dart';
@@ -26,12 +27,16 @@ class HomePage extends StatelessWidget {
           bannerImageUrl: bannerImageUrl,
           bannerTitle: bannerTitle,
         ),
-        const Spacing(size: 20.0),
+        const Spacing(size: 10.0),
         VisionResponsive(isMobile: isMobile),
-        const Spacing(size: 20.0),
+        const Spacing(size: 30.0),
         LiveGreenResponsive(
           isMobile: isMobile,
           datas: aboutModels,
+        ),
+        const Spacing(size: 30.0),
+        CropDataResponsive(
+          isMobile: isMobile,
         ),
         FooterResponsive(isWebMobile: isMobile)
       ],

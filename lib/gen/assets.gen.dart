@@ -25,6 +25,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/heart.png
   AssetGenImage get heart => const AssetGenImage('assets/icons/heart.png');
 
+  /// File path: assets/icons/icon_launcher.jpg
+  AssetGenImage get iconLauncher =>
+      const AssetGenImage('assets/icons/icon_launcher.jpg');
+
   /// File path: assets/icons/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
 
@@ -34,11 +38,15 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [animalProtection, bush1, earth, heart, logo, subIconpng];
+      [animalProtection, bush1, earth, heart, iconLauncher, logo, subIconpng];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/crop_data.png
+  AssetGenImage get cropData =>
+      const AssetGenImage('assets/images/crop_data.png');
 
   /// File path: assets/images/infomation.png
   AssetGenImage get infomation =>
@@ -70,6 +78,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        cropData,
         infomation,
         sumenh1,
         sumenh2,

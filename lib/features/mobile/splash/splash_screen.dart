@@ -29,11 +29,9 @@ class _SplashScreenState extends State<SplashScreen> {
     String? uid = await prefsService.getUid();
     Future.delayed(const Duration(seconds: 2), () {
       if (uid != null) {
-        // Nếu người dùng đã đăng nhập, điều hướng đến MainScreen (màn hình chính)
         context.pushAndRemoveUntil(
             screen: const MainScreen(), type: PageTransitionType.rightToLeft);
       } else {
-        // Nếu chưa đăng nhập, điều hướng đến màn hình Login
         context.pushAndRemoveUntil(
             screen: const LoginScreen(), milliseconds: 2000);
       }
