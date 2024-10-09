@@ -19,7 +19,7 @@ class AuthService {
             id: user.uid,
             email: email,
             userName: userName,
-            totalMoney: 10000000000,
+            totalMoney: 5000000,
             avatar:
                 'https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg');
         await _firestore.collection('users').doc(user.uid).set(newUser.toMap());
